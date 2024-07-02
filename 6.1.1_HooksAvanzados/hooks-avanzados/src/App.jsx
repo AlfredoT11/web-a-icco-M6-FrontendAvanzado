@@ -1,7 +1,9 @@
 import './App.css'
 import CounterComponent from './components/CounterComponent'
 import ChronometerComponent from './components/ChronometerComponent';
+import LoginComponent from './components/LoginComponent';
 import { useRef, useState, useEffect } from 'react';
+import RegisterFormComponent from './components/RegisterFormComponent';
 
 function App() {
 
@@ -30,6 +32,9 @@ function App() {
       <ChronometerComponent /> 
       <ChronometerComponent /> 
       <ChronometerComponent /> 
+
+      <LoginComponent />
+      <RegisterFormComponent />
 
     </>
   )
