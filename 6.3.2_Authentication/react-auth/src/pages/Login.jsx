@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useRef } from "react";
 import useAuthContext from "../hooks/useAuthContext";
+import { loginService, registerUserService } from "../services/login";
 
 const Login = () => {
 
@@ -25,22 +25,27 @@ const Login = () => {
         console.log(emailRef.current.value);
         console.log(passwordRef.current.value);
 
-        try{
-            let response = await axios.post('http://localhost:3000/login', {
-                email: emailRef.current.value,
-                password: passwordRef.current.value
-            });
-            console.log(response);
-            if(response.status == 200){
-                console.log('Authorization granted!');
-                login(response.data.token);
-            }else{
-                console.log('Error during authorization');
-            }
-        }catch(error){
-            console.log('An error ocurred ', error);
+        const loginInfo = {
+            email: emailRef.current.value,
+            password: passwordRef.current.value
         }
 
+        loginService(loginInfo, login);
+    }
+
+    const registerUser = async (e) => {
+        e.preventDefault();
+        const newUserInfo = {
+            first_name: firstNameRef.current.value,
+            last_name: lastNameRef.current.value,
+            gender: genderRef.current.value,
+            email: emailRegisterRef.current.value,
+            password: passwordRegisterRef.current.value,
+            // "role": "CUSTOMER"
+        }
+        console.log(newUserInfo);
+
+        registerUserService(newUserInfo);
 
     }
 
@@ -66,7 +71,7 @@ const Login = () => {
                 <label>Role: </label><select ref={roleRef}>
                     <option value='CUSTOMER'>Customer</option>
                 </select>
-                <button>Signup</button>
+                <button onClick={registerUser}>Signup</button>
             </form>
         </>
     )
