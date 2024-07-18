@@ -3,11 +3,13 @@ import axios from "axios";
 
 const Me = () => {
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
     const [meData, setMeData] = useState(null);
 
     const requestMeData = async () => {
         try{
-            const response = await axios.get('http://localhost:3000/users/me', {
+            const response = await axios.get(`${API_URL}/users/me`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
