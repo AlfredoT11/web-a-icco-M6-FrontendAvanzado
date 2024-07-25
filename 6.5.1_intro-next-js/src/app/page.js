@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-// import styles from "./page.module.css";
+import "../app/styles/divsStyles.scss"
 
 const checkEvenNumber = async (number) => {
-  try{
+  try {
     const data = await fetch(`https://api.isevenapi.xyz/api/iseven/${number}/`);
     const jsonData = await data.json();
     return jsonData;
-  }catch(e){
+  } catch (e) {
     alert(e);
     return {};
   }
@@ -26,6 +26,18 @@ export default async function Home() {
       <Link href="/temario">Temario del curso</Link>
       <br></br>
       <Link href="/registrar">Registrarme al curso</Link>
+
+      <div className="divFlex">
+        <div className="divVerdeAzul"><h2>Usando estilos con sass</h2></div>
+        <div className="divAmarilloRojo">
+          <h2>Usando estilos con sass</h2>
+          <div>
+            <p>Estoy dentro del div amarillo rojo</p>
+          </div>
+        </div>
+      </div>
+
+
     </>
 
     /*

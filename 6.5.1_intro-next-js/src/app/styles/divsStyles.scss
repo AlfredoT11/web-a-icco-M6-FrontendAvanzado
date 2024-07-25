@@ -1,0 +1,30 @@
+@mixin divFondoBordeColor($colorFondo, $colorBorde) {
+    background: $colorFondo;
+    border-color: $colorBorde;
+    border-style: solid;
+    flex-direction: row;
+}
+
+$miVerde: #216E04;
+
+.divFlex{
+    display: flex;
+    gap: 20px;
+}
+
+.divVerdeAzul {
+    @include divFondoBordeColor($miVerde, blue);
+}
+
+.divAmarilloRojo {
+    @include divFondoBordeColor(yellow, red);
+
+    div {
+        color: $miVerde;
+    }
+
+    h2 {
+        color: white;
+    }
+
+}
